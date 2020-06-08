@@ -1,46 +1,52 @@
 ## =============================================================================
 #  Variables - Authentication                                                  #
 ## =============================================================================
+variable "aws_access_key" {
+  type        = string
+  description = "Access key authorized for this action"
+}
+
+variable "aws_secret_key" {
+  type        = string
+  description = "Secret key authorized for this action"
+}
+
+## =============================================================================
+#  Variables - Location                                                        #
+## =============================================================================
 variable "aws_region" {
   type        = string
-  description = "Default region for root module"
+  description = "Region to create Mabel resources"
   default     = "us-west-2"
 }
 
 ## =============================================================================
-#  Variables - Naming                                                          #
+#  Variables - Network                                                        #
 ## =============================================================================
-variable "aws_root_name" {
+variable "aws_vpc" {
   type        = string
-  description = "Root name prefix to use in resource name tags"
-  default     = "octo"
+  description = "VPC to deploy Mabel instances"
 }
 
-variable "aws_region_name" {
+variable "aws_subnet" {
   type        = string
-  description = "Region name suffix to use in resource name tags"
-  default     = "usw2"
+  description = "Subnet to deploy Mabel instances"
 }
 
-variable "aws_environment_name" {
+variable "aws_security_group" {
   type        = string
-  description = "Environment name to use in resource name tags"
-  default     = "prod"
+  description = "Security Group to associate with Mabel instances"
 }
 
-variable "aws_source_name" {
+## =============================================================================
+#  Variables - Mabel App                                                       #
+## =============================================================================
+variable "aws_key_pair_name" {
   type        = string
-  description = "Source name of the tool that constructed the resource to use in resource name tags"
-  default     = "terraform"
+  description = "Key Pair name to associate with Mabel instances"
 }
 
-variable "app_root_name" {
-  type        = string
-  description = "Root application name prefix to use in resource name tags"
-  default     = "mabel"
-}
-
-variable "app_name" {
+variable "aws_mabel_app_name" {
   type        = map
   description = "The name used for each unique application in the demo"
   default = {
@@ -51,8 +57,15 @@ variable "app_name" {
   }
 }
 
-variable "demo_name" {
+## =============================================================================
+#  Variables - Tags                                                            #
+## =============================================================================
+variable "aws_environment_name" {
   type        = string
-  description = "The name of the demo to use as a tag for easy resource identification"
-  default     = "mabel-ecommerce-ec2-demo"
+  description = "Tag for environment tier"
+}
+
+variable "aws_region_name" {
+  type        = string
+  description = "Tag for Region used as a Name suffix"
 }
