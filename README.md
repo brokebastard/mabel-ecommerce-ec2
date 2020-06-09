@@ -19,12 +19,15 @@ There are a few services you'll need in order to get this project off the ground
 
 Ensure the following resources are created in AWS:
 
-1. VPC in your desired region. Oregon (us-west-2) is selected by default.
-1. A subnet with 4 or more available private IP addresses in your VPC.
-1. A security group to assign to the Mabel eCommerce EC2 instances.
-1. A Key Pair to assign to the Mabel eCommerce EC2 instances for console access.
+1. VPC in your desired region. Oregon (us-west-2) is selected by default. Gather the `id` value.
+1. A subnet with 4 or more available private IP addresses in your VPC. Gather the `id` value. 
+1. A security group to assign to the Mabel eCommerce EC2 instances. Gather the `id` value.
+1. A Key Pair to assign to the Mabel eCommerce EC2 instances for console access. Gather the `name` value.
 
-Gather the required `id` or `name` values for each of these resources. Supply the values into the `terraform.tfvars` file along with an AWS access key and secret key with permissions to create and delete resources.
+Modify the Terraform configuration as follows:
+
+1. Clone this repository and navigate to the [code](/code) folder.
+1. Supply the values into the [terraform.tfvars](/code/terraform.tfvars) file along with an AWS access key and secret key with permissions to create and delete resources. Alternatively, use the AWS CLI to store your credentials.
 
 ## :pushpin: License
 
